@@ -1,0 +1,62 @@
+<div class="app-container">
+
+  <header class="navbar">
+    <nav class="nav-center">
+      <a routerLink="/">Accueil</a>
+
+      @if(userService.recupererUser()) {
+        <a routerLink="/layout">Dashboard</a>
+      }
+
+      @if(!userService.recupererUser()){
+        <a routerLink="/login" class="btn-login">Connexion</a>
+      }
+    </nav>
+
+    @if(userService.recupererUser()){
+      <div class="right">
+        <div class="user-info">
+          <span>
+            Bonjour {{ userService.recupererUser()?.nom }}
+            {{ userService.recupererUser()?.prenom }}
+          </span>
+
+          <div class="avatar">
+            {{ userService.recupererUser()?.prenom?.charAt(0)?.toUpperCase() }}
+          </div>
+        </div>
+      </div>
+    }
+
+  </header>
+
+
+   <div class="page-content">
+    <router-outlet></router-outlet>
+   </div>
+
+<footer class="footer">
+
+  <div class="footer-content">
+
+    <div>
+      <strong>CliniquePlus Dashboard</strong>
+      <p> Gestion des consultations médicales</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+      <a href="#">Support</a>
+    </div>
+
+    <div>
+      <p>Version 1.0.0</p>
+      <p>&copy; 2026 Dream Team. Tous droits réservés.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+</div>

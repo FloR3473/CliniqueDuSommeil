@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin:0;
+    background:#eef5ff;
+    font-family:'Poppins',sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    font-family:'Poppins',sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.page-content {
+  flex: 1;
+}
+
+
+.footer {
+  background: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}

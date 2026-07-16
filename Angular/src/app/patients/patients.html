@@ -1,0 +1,47 @@
+<h2>Liste des patients</h2>
+
+<table class="patients-table">
+  <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de naissance</th>
+        <th>Sexe</th>
+        <th>Adresse</th>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th>N° Sécu</th>
+        <th>IMC initial</th>
+        <th>Fumeur</th>
+        <th>PA Tabac</th>
+        <th>Consommation d'alcool</th>
+        <th>Profession</th>
+        <th>Niveau d'activité</th>
+        <th>Date création DPI</th>
+        <th>Actif</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (patient of patients(); track patient.id) {
+      <tr>
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.prenom }}</td>
+          <td>{{ patient.date_naissance | date:'yyyy-MM-dd' }}</td>
+          <td>{{ patient.sexe }}</td>
+          <td>{{ patient.adresse }}</td>
+          <td>{{ patient.telephone }}</td>
+          <td>{{ patient.email }}</td>
+          <td>{{ patient.numero_secu }}</td>
+          <td>{{ patient.imc_initial }}</td>
+          <td>{{ patient.fumeur }}</td>
+          <td>{{ patient.pa_tabac }}</td>
+          <td>{{ patient.consommation_alcool }}</td>
+          <td>{{ patient.profession }}</td>
+          <td>{{ patient.niveau_activite }}</td>
+          <td>{{ patient.date_creation_dpi }}</td>
+          <td>{{ patient.actif }}</td>
+      </tr>
+    }
+  </tbody>
+  
+</table>

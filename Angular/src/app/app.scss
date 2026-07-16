@@ -1,0 +1,226 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 90px;
+  padding: 0 40px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   MENU CENTRÉ PARFAIT
+========================= */
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* liens */
+.nav-center a {
+  text-decoration: none;
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+
+  padding: 8px 5px;
+  position: relative;
+
+  transition: all 0.3s ease;
+}
+
+/* underline animation (sauf bouton connexion) */
+.nav-center a:not(.btn-login)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 0%;
+  height: 3px;
+
+  background: #2563eb;
+  border-radius: 10px;
+
+  transition: 0.3s ease;
+}
+
+.nav-center a:not(.btn-login):hover::after {
+  width: 100%;
+}
+
+.nav-center a:not(.btn-login):hover {
+  color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   BOUTON CONNEXION
+========================= */
+
+.btn-login {
+  padding: 12px 32px;
+  border-radius: 30px;
+
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: white !important;
+
+  font-weight: bold;
+  font-size: 17px;
+
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.6);
+}
+
+/* =========================
+   USER DROITE
+========================= */
+
+.right {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* =========================
+   AVATAR
+========================= */
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  background: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .nav-center {
+    position: static;
+    transform: none;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .right {
+    margin-left: 0;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.content {
+    flex: 1;
+}
+
+
+.footer {
+    background: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+}
+
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
+.footer-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px 20px;
+}

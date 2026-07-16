@@ -1,0 +1,115 @@
+<h1>Résultats Nuits</h1>
+
+@if(userService.recupererUser()?.role === 'medecin'){
+<p>
+  Application Médecin
+</p>
+<p>
+  Bienvenue dans votre interface médecin. Celle-ci vous permet de consulter les résultats des nuits d'étude
+  et de valider les diagnostics. 
+
+  <br> Le dashboard CPAP permet de visualiser les alertes CPAP ainsi que les analyses IA.
+</p>
+<!-- Bouton application -->
+<button class="btn-application" (click)="ouvrirAppli()">
+  Résultats des Nuits d'Étude
+</button> <br> <br>
+<button class="btn-application" (click)="ouvrirDashboardCpap()">
+  Dashboard CPAP
+</button>
+
+}
+@if(userService.recupererUser().role === 'operateur'){
+<p>
+  Application Opérateur
+</p>
+
+<!-- =========================
+     FORMULAIRE PRINCIPAL
+========================= -->
+<section class="form-section">
+
+  <!-- Nuit -->
+  <label for="nuit-table"> Liste des nuits à traiter </label>
+  <table class="nuit-table">
+    <thead>
+      <tr>
+        <th>Id Nuit</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de la nuit</th>
+        <th>Type d'étude</th>
+        <th>Note technique</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (nuit of NuitsNontraitees(); track nuit.id) {
+      <tr>
+        <td>{{ nuit.id_nuit }}</td>
+        <td>{{ nuit.nom }}</td>
+        <td>{{ nuit.prenom }}</td>
+        <td>{{ nuit.date_nuit | date:'yyyy-MM-dd'}}</td>
+        <td>{{ nuit.type_etude }}</td>
+        <td>{{ nuit.notes_techniques }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+
+  <label for="nuitSelect"> Selectionner une nuit à traiter </label>
+  <select id="nuitSelect" [(ngModel)]="inputIdNuit">
+
+    <option value="">Choisir l'identifiant de la nuit</option>
+
+    @for (nuit_etude of NuitsNontraitees(); track nuit_etude.id_nuit) {
+    <option [value]="nuit_etude.id_nuit">
+      Nuit {{ nuit_etude.id_nuit }}
+    </option>
+    }
+  </select>
+
+  <!-- Médecin -->
+  <label for="medecinSelect">Sélectionner un médecin validateur </label>
+  <select id="medecinSelect" [(ngModel)]="inputIdMedecin">
+
+    <option value="">Choisir le médecin validateur</option>
+
+    @for (medecin of medecins(); track medecin.id) {
+    <option [value]="medecin.id_personnel">
+      {{ medecin.nom }} {{ medecin.prenom }} - {{ medecin.specialite }}
+    </option>
+    }
+  </select>
+
+  <!-- Commentaire -->
+  <div class="commentaire-container">
+
+    <label for="commentaire"> Saisir un commentaire</label>
+
+    <textarea id="commentaire" [(ngModel)]="commentaire" rows="5" placeholder="Saisissez votre commentaire...">
+    </textarea>
+
+    <button class="btn-envoyer" (click)="lancerEtl(inputIdNuit, inputIdMedecin, commentaire)" [disabled]="isLoading">
+
+      <span *ngIf="!isLoading">
+        Déclenchement ETL 1
+      </span>
+
+      <span *ngIf="isLoading" class="loader-container">
+        <span class="spinner"></span>
+        Traitement en cours ...
+      </span>
+
+    </button>
+
+  </div>
+
+</section>
+
+<!-- Message retour -->
+<p *ngIf="result() as res" [ngClass]="res.success ? 'message-resultat-success' : 'message-resultat-fail'">
+
+  {{ res.message }}
+</p>
+}
