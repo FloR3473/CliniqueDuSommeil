@@ -8,3 +8,4 @@ datalake.db
 base-analytique/*.db
 base-analytique/*.db-journal
 patients/
+node_modules/
