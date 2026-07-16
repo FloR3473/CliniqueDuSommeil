@@ -1,0 +1,4 @@
+include : 
+- BDD/compose.yml
+- API/compose.yml
+- Angular/compose.yml
