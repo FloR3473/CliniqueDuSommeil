@@ -59,7 +59,7 @@ Puis le placer dans le même dossier que le fichier docker-compose.yml
 Taper la commande suivante dans le terminal à la racine du dossier :
 
 ```bash
-docker compose -f docker-compose.yml up -d
+docker compose up -d
 ```
 Le projet est lancé.
 
@@ -67,7 +67,7 @@ Le projet est lancé.
 Pour arrêter l'application, taper la commande suivante dans le terminal à la racine du dossier :
 
 ```bash
-docker compose -f docker-compose.yml down -v
+docker compose down -v
 ```
 
 # Ports utilises
