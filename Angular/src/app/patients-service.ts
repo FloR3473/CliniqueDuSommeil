@@ -6,6 +6,6 @@ export class PatientsService {
     constructor(private http: HttpClient){};
 
     getPatients(){
-        return this.http.get('http://localhost:3000/afficherPatients');
+        return this.http.get('http://localhost:9000/afficherPatients');
     }
 }

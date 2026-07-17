@@ -6,10 +6,10 @@ export class NuitService {
     constructor(private http: HttpClient){ };
 
     getMedecins(){
-    return this.http.get('http://localhost:3000/medecins_validateurs');
+    return this.http.get('http://localhost:9000/medecins_validateurs');
     }
 
     getNuitsNonTraitees(){
-    return this.http.get('http://localhost:3000/nuitEtude');
+    return this.http.get('http://localhost:9000/nuitEtude');
     }
 }

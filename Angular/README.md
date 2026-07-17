@@ -8,10 +8,10 @@ Ce projet a été réalisé dans le cadre du brief interface utilisateur avec po
 ## 🚀 Fonctionnalités
 
 - ✅ Page accueil
-- ✅ Page login (utilisation de la route :http://localhost:3000/login )
+- ✅ Page login (utilisation de la route :http://localhost:9000/login )
 - ✅ Page dashboard
 - ✅ Authentification
-- ✅ Administration afficher tout les patients (pour l'instant) route : http://localhost:3000/afficherPatient
+- ✅ Administration afficher tout les patients (pour l'instant) route : http://localhost:9000/afficherPatient
 
 ---
 

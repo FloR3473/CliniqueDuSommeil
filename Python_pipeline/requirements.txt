@@ -1,0 +1,9 @@
+mysql-connector-python
+pandas
+numpy
+matplotlib
+streamlit
+dotenv
+Pillow
+seaborn
+openpyxl

@@ -15,7 +15,7 @@ npm install mysql2
 
 nodemon 
 ```
-Le serveur démarre sur `http://localhost:3000`.
+Le serveur démarre sur `http://localhost:9000`.
 
 La base de données utilisée est `clinique` (MySQL). Pour la connecter aux projet:
 ```js

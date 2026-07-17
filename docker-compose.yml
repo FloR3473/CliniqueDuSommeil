@@ -1,4 +1,69 @@
-include : 
-- BDD/compose.yml
-- API/compose.yml
-- Angular/compose.yml
+services:
+
+  db:
+    image: mysql:8
+    container_name: clinique-db
+    # Charge les identifiants depuis le .env à la racine
+    # env_file:
+    #   - ../.env
+    # Expose la db sur localhost:3307
+    environment:
+      #DB_HOST: ${DB_HOST}
+      DB_HOST: db
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    
+    ports:
+      - "3307:3306"
+    # le dump initdb/ n'est rejoué que si le contenu de la db est vide
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p\"$$DB_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks: 
+      - default
+  clinique-api:
+    # Contexte à la racine du projet : le Dockerfile copie Api/ et etl2/
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+    image: node-application
+    container_name: clinique-api
+    ports:
+      - "9000:3000"
+    # Charge les identifiants depuis le .env à la racine
+    # env_file:
+    #   - ../.env
+    # Dans le réseau Compose, la db est joignable via son nom de service
+    # sur son port interne (3306), pas via localhost:3307 (vue de l'hôte)
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      #DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      PATH_ETL: ${PATH_ETL}
+
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: 
+      - default
+
+  server:
+    build:
+      context: ./angular
+      dockerfile: Dockerfile
+    container_name: clinique-angular
+
+    ports:
+      - 4200:8080
+
+volumes:
+  db_data:
