@@ -6,8 +6,8 @@ const medecinModele = require('../modele/medecinModel.js')
 router.get('/medecins_validateurs', (req,res) => {
 
     medecinModele.trouverMedecinsValidateurs((err, medecin) => {
-         console.log("Erreur SQL :", err);
-    console.log("Medecin :", medecin);
+        //  console.log("Erreur SQL :", err);
+    // console.log("Medecin :", medecin);
 
         if (err) {
             return res.status(500).json({

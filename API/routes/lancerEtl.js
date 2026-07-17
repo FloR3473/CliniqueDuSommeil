@@ -8,7 +8,7 @@ router.post('/lancer-etl-operateur', lancerScript);
 
 function lancerScript(req, res) {
 
-    const pythonProcess = spawn('python', [
+    const pythonProcess = spawn('python3', [
         process.env.PATH_ETL,
         req.body.id_nuit,
         req.body.id_medecin,

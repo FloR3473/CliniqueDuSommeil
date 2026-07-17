@@ -1,14 +1,20 @@
-# syntax=docker/dockerfile:1
-
 FROM node:24-alpine
 
 WORKDIR /app
 
+
+RUN apk add --no-cache python3 py3-pip
+
 COPY API/package*.json ./
+RUN npm ci --omit=dev
 
-RUN npm install --omit=dev
 
-COPY API/ .
+COPY API/PYTHON/requirements.txt ./PYTHON/requirements.txt
+RUN python3 -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir -r ./PYTHON/requirements.txt
+
+COPY API/ ./
+
+ENV PATH="/opt/venv/bin:$PATH"
 
 EXPOSE 3000
 

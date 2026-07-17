@@ -5,7 +5,7 @@ const userModele = require('../modele/utilisateur.js')
 router.post('/', (req, res) => {
 
     const { email, mdp } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     userModele.findUserByMailAndPassword(email, mdp, (err, user) => {
 
         if (err) {
