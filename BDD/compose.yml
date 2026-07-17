@@ -1,0 +1,23 @@
+services:
+  db:
+    build:
+      context: .
+    image: arcar13/clinique:db
+    container_name: db
+    env_file:
+      - ../.env
+    ports:
+      - "3307:3306"
+    # le dump initdb/ n'est rejoué que si le contenu de la db est vide
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+    # mysqlsh --uri root@127.0.0.1:3306/clinique --sql -p
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p\"$$DB_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  db_data:  
