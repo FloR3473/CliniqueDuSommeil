@@ -16,12 +16,12 @@ Il contient tout ce qu’il faut pour que l'application tourne correctement :
 - commande de lancement de l’application
 
 Voici les instructions les plus courantes :
-- FROM : Spécifie l’image de base pour une nouvelle étape de construction.
-- RUN : Exécute des commandes pendant le processus de création de l’image.
-- COPY ou ADD : Copie les fichiers du contexte de construction dans l’image.
-- CMD ou ENTRYPOINT : Définit la commande qui s’exécute au démarrage du conteneur.
-- ENV : Définit les variables d’environnement qui seront disponibles pendant la construction et lors de l’exécution.
-- WORKDIR : Définit le répertoire de travail pour les instructions RUN, CMD, ENTRYPOINT, COPY et ADD suivantes.
+- ```FROM``` : Spécifie l’image de base pour une nouvelle étape de construction.
+- ```RUN``` : Exécute des commandes pendant le processus de création de l’image.
+- ```COPY``` ou ```ADD``` : Copie les fichiers du contexte de construction dans l’image.
+- ```CMD``` ou ```ENTRYPOINT``` : Définit la commande qui s’exécute au démarrage du conteneur.
+- ```ENV``` : Définit les variables d’environnement qui seront disponibles pendant la construction et lors de l’exécution.
+- ```WORKDIR``` : Définit le répertoire de travail pour les instructions RUN, CMD, ENTRYPOINT, COPY et ADD suivantes.
 
 Une fois le Dockerfile créé, on construit l'image via la commande suivante :
 ```bash
