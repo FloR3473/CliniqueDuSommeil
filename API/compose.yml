@@ -1,9 +1,9 @@
 services:
   api:
-    # Contexte à la racine du projet : le Dockerfile copie Api/ et etl2/
+    # Contexte à la racine du projet : le Dockerfile copie le contenu du dossier Api/ dans /app (COPY . .)
     build:
-      context: ..
-      dockerfile: Api/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     image: node-application
     container_name: clinique-api
     ports:
@@ -19,3 +19,5 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - default

@@ -17,6 +17,8 @@ services:
       timeout: 5s
       retries: 10
     restart: unless-stopped
+    networks:
+      - default
 
 volumes:
   db_data:
